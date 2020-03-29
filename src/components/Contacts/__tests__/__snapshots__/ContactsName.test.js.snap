@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactsName Component matches snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="avatar"
+    >
+      B
+      B
+    </div>
+    <div
+      class="name"
+    >
+      <a
+        class="a"
+        href="#"
+      >
+        Barbara
+         
+        Barbara
+      </a>
+    </div>
+  </div>
+</div>
+`;

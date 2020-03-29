@@ -4,7 +4,6 @@ import axios from "axios";
 
 export default function ContactsDeal({ dealsLink }) {
   const [deals, setDeals] = React.useState("");
-
   React.useEffect(() => {
     async function fetchDeals() {
       const res = await axios.get(

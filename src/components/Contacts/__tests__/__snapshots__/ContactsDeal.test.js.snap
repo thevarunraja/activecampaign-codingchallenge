@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactsDeal Component fetched and displays data 1`] = `
+<div>
+  <div
+    class="dealString"
+  >
+    tree, yfoyfoyfoy
+  </div>
+</div>
+`;
