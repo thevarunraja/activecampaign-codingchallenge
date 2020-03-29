@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #000;
+  border-radius: 50%;
+  background: #eae0fe;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.name {
+  overflow: hidden;
+  width: 195px;
+  padding-left: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
