@@ -33,7 +33,7 @@ describe("ContactsTag Component", () => {
     const { container } = render(
       <ContactsTag
         contactTagsLink={
-          "ContactsTag.js:6 https://lamppoststudios.api-us1.com/api/3/contacts/856/contactTags"
+          "https://lamppoststudios.api-us1.com/api/3/contacts/856/contactTags"
         }
       />
     );
