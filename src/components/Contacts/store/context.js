@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import reducer from "./reducer";
+import * as actionTypes from "./actionTypes";
 
 const ContactsContext = React.createContext();
 
@@ -8,16 +9,20 @@ const initialState = {
   contacts: null
 };
 
-export default function(props) {
+export default function ContactsProvider(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    axios.get(`https://lamppoststudios.api-us1.com/api/3/contacts`, {
-      params: {
-        "Api-Token":
-          "0f7e5c9167768f6bb0a6e09e335ce464da7cb5e7008b989f0057266c26342424a4d8d3e5"
+    async function fetchContacts() {
+      try {
+        const res = await axios.get(`/api/3/contacts`, {});
+        dispatch({ type: actionTypes.SAVE_CONTACTS, payload: res.data });
+      } catch (e) {
+        console.error(`error fetching contacts`);
+        console.error(e);
       }
-    });
+    }
+    fetchContacts();
   }, []);
 
   return (
@@ -30,3 +35,9 @@ export default function(props) {
     </ContactsContext.Provider>
   );
 }
+
+function useContactsContext() {
+  return React.useContext(ContactsContext);
+}
+
+export { useContactsContext };
