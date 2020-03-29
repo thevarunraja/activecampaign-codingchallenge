@@ -1,0 +1,12 @@
+.header {
+  background-color: #356ae6;
+}
+
+.header div {
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  height: 65px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
