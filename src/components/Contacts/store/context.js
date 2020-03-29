@@ -6,7 +6,9 @@ import * as actionTypes from "./actionTypes";
 const ContactsContext = React.createContext();
 
 const initialState = {
-  contacts: null
+  contacts: null,
+  selectedContacts: [],
+  allContactsToggle: false
 };
 
 export default function ContactsProvider(props) {
@@ -25,10 +27,26 @@ export default function ContactsProvider(props) {
     fetchContacts();
   }, []);
 
+  const setSelectedContact = React.useCallback(hash => {
+    dispatch({
+      type: actionTypes.SET_SELECTED_CONTACTS,
+      payload: hash
+    });
+  }, []);
+
+  const setAllContactsToggle = React.useCallback(() => {
+    dispatch({
+      type: actionTypes.SET_ALL_CONTACTS_TOGGLE,
+      payload: true
+    });
+  }, []);
+
   return (
     <ContactsContext.Provider
       value={{
-        state
+        state,
+        setSelectedContact,
+        setAllContactsToggle
       }}
     >
       {props.children}

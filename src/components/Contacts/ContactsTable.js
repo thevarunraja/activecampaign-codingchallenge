@@ -7,8 +7,11 @@ import styles from "./ContactsTable.module.css";
 import { useContactsContext } from "./store";
 
 export default function ContactsTable() {
-  const { state } = useContactsContext();
-  console.log(state);
+  const {
+    state,
+    setSelectedContact,
+    setAllContactsToggle
+  } = useContactsContext();
   if (!state.contacts) {
     return null;
   }
@@ -17,7 +20,11 @@ export default function ContactsTable() {
       <thead className={styles.tableHead}>
         <tr>
           <th className={`${styles.th} ${styles.tCol1}`}>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={state.allContactsToggle}
+              onChange={setAllContactsToggle}
+            />
           </th>
           <th className={`${styles.th} ${styles.tCol2}`}>Contact</th>
           <th className={`${styles.th} ${styles.tCol3}`}>Total Value</th>
@@ -30,9 +37,26 @@ export default function ContactsTable() {
         {state.contacts.contacts.length >= 1 &&
           state.contacts.contacts.map(contact => {
             return (
-              <tr className={styles.tr} key={contact.hash}>
+              <tr
+                className={styles.tr}
+                key={contact.hash}
+                style={{
+                  ...((state.selectedContacts.includes(contact.hash) ||
+                    state.allContactsToggle) && {
+                    background: "#e2ebfc"
+                  })
+                }}
+                onClick={() => setSelectedContact(contact.hash)}
+              >
                 <td className={`${styles.td} ${styles.tCol1}`}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={
+                      state.selectedContacts.includes(contact.hash) ||
+                      state.allContactsToggle
+                    }
+                    readOnly
+                  />
                 </td>
                 <td className={`${styles.td} ${styles.tCol2}`}>
                   <ContactName
