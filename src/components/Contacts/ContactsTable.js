@@ -22,7 +22,9 @@ export default function ContactsTable() {
           <th className={`${styles.th} ${styles.tCol1}`}>
             <input
               type="checkbox"
-              checked={state.allContactsToggle}
+              checked={
+                state.contacts.contacts.length === state.selectedContacts.length
+              }
               onChange={setAllContactsToggle}
             />
           </th>
