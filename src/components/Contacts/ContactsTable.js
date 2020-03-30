@@ -41,8 +41,7 @@ export default function ContactsTable() {
                 className={styles.tr}
                 key={contact.hash}
                 style={{
-                  ...((state.selectedContacts.includes(contact.hash) ||
-                    state.allContactsToggle) && {
+                  ...(state.selectedContacts.includes(contact.hash) && {
                     background: "#e2ebfc"
                   })
                 }}
@@ -51,10 +50,7 @@ export default function ContactsTable() {
                 <td className={`${styles.td} ${styles.tCol1}`}>
                   <input
                     type="checkbox"
-                    checked={
-                      state.selectedContacts.includes(contact.hash) ||
-                      state.allContactsToggle
-                    }
+                    checked={state.selectedContacts.includes(contact.hash)}
                     readOnly
                   />
                 </td>

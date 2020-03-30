@@ -7,5 +7,5 @@ export default function ContactsValue({ scoreValues }) {
       return parseInt(a) + parseInt(b);
     }, 0);
   }
-  return <div>{sum}</div>;
+  return <div>$ {sum}</div>;
 }

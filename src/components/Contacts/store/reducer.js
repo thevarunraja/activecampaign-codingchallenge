@@ -17,8 +17,10 @@ export default function reducer(state, action) {
       };
     }
     case actionTypes.SET_ALL_CONTACTS_TOGGLE:
+      const hashes = state.contacts.contacts.map(contact => contact.hash);
       return {
         ...state,
+        selectedContacts: state.allContactsToggle ? [] : hashes,
         allContactsToggle: !state.allContactsToggle
       };
     default:
