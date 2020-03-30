@@ -37,9 +37,9 @@ export default function ContactsProvider(props) {
   const setAllContactsToggle = React.useCallback(() => {
     dispatch({
       type: actionTypes.SET_ALL_CONTACTS_TOGGLE,
-      payload: true
+      payload: !state.allContactsToggle
     });
-  }, []);
+  }, [state.allContactsToggle]);
 
   return (
     <ContactsContext.Provider

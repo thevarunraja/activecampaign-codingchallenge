@@ -8,20 +8,20 @@ export default function reducer(state, action) {
         ...state,
         contacts: payload
       };
-    case actionTypes.SET_SELECTED_CONTACTS: {
+    case actionTypes.SET_SELECTED_CONTACTS:
       return {
         ...state,
+        allContactsToggle: false,
         selectedContacts: state.selectedContacts.includes(payload)
           ? state.selectedContacts.filter(hash => hash !== payload)
           : [...state.selectedContacts, payload]
       };
-    }
     case actionTypes.SET_ALL_CONTACTS_TOGGLE:
       const hashes = state.contacts.contacts.map(contact => contact.hash);
       return {
         ...state,
-        selectedContacts: state.allContactsToggle ? [] : hashes,
-        allContactsToggle: !state.allContactsToggle
+        selectedContacts: payload ? hashes : [],
+        allContactsToggle: payload
       };
     default:
       return state;
