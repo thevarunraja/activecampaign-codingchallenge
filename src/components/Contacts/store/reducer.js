@@ -11,6 +11,7 @@ export default function reducer(state, action) {
     case actionTypes.SET_SELECTED_CONTACTS: {
       return {
         ...state,
+        allContactsToggle: false,
         selectedContacts: state.selectedContacts.includes(payload)
           ? state.selectedContacts.filter(hash => hash !== payload)
           : [...state.selectedContacts, payload]
